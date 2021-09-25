@@ -1,7 +1,7 @@
 require './lib/converter'
 
 RSpec.describe do
-  before(:each)do
+  before(:each) do
     @converter = Converter.new
   end
 
