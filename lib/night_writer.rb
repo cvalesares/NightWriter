@@ -8,5 +8,6 @@ include DictionaryMod
 
 converter.print
 converter.create
+converter.to_braille
 
-# puts converter.to_braille
+#maybe write command that deletes braille.txt on new entry

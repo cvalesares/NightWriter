@@ -4,7 +4,7 @@ class Converter
   include DictionaryMod
   attr_reader :input,
               :write_to,
-              :read,
+              :read
               # :top,
               # :middle,
               # :bot
@@ -27,7 +27,7 @@ class Converter
 
   def create
     File.open("#{@write_to}", "w") do |file|
-      #this is hardcoded... needs to return braile
+      #this is hardcoded... needs to return braile helper method
       file.write('test')
     end
   end
@@ -38,13 +38,10 @@ class Converter
     input_text.each do |letter|
         define.keys.include?(letter)
         results << define[letter]
-      # @dictionary.middle_row.keys.include?(letter)
-      #   @middle << @dictionary.middle_row[letter]
-      # @dictionary.bot_row.keys.include?(letter)
-      #   @bot << @dictionary.bot_row(letter)
     end
     results
-    require "pry"; binding.pry
-    # File.write("#{@write_to}", )
+    # require "pry"; binding.pry
+    #this line is written incorrectly
+    File.write("#{@write_to}", results)
   end
 end
