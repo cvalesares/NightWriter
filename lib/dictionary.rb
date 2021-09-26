@@ -1,7 +1,17 @@
 class Dictionary
+  attr_reader :top_row,
+              :middle_row,
+              :bot_row
+
+  def initialize
+    @top_row    = top_row
+    @middle_row = middle_row
+    @bot_row    = bot_row
+  end
+
 #0 is raised
 #. is empty
-  top = {
+  @top_row = {
     'a' => '0.',
     'b' => '0.',
     'c' => '00',
@@ -29,9 +39,9 @@ class Dictionary
     'y' => '00',
     'z' => '0.',
     ' ' => '..'
-  }
+    }
 
-  center = {
+  @center_row = {
     'a' => '..',
     'b' => '0.',
     'c' => '..',
@@ -61,7 +71,7 @@ class Dictionary
     ' ' => '..'
   }
 
-  bottom = {
+  @bot_row = {
     'a' => '..',
     'b' => '..',
     'c' => '..',

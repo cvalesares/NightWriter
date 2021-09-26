@@ -1,7 +1,13 @@
+require './lib/dictionary_mod'
+
 class Converter
+  include DictionaryMod
   attr_reader :input,
               :write_to,
-              :read
+              :read,
+              # :top,
+              # :middle,
+              # :bot
 
   #ARGV[0] = original text file
   #ARGV[1] = new braille text file
@@ -9,6 +15,9 @@ class Converter
     @input = ARGV
     @write_to = input[1]
     @read = File.read(input[0])
+    # @middle = []
+    # @bot = []
+    # @dictionary = Dictionary.new
   end
 
   def print
@@ -21,6 +30,21 @@ class Converter
       #this is hardcoded... needs to return braile
       file.write('test')
     end
+  end
+
+  def to_braille
+    results = []
+    input_text = File.read("message.txt").split("")
+    input_text.each do |letter|
+        define.keys.include?(letter)
+        results << define[letter]
+      # @dictionary.middle_row.keys.include?(letter)
+      #   @middle << @dictionary.middle_row[letter]
+      # @dictionary.bot_row.keys.include?(letter)
+      #   @bot << @dictionary.bot_row(letter)
+    end
+    results
+    require "pry"; binding.pry
     # File.write("#{@write_to}", )
   end
 end
