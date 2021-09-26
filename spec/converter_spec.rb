@@ -1,8 +1,10 @@
 require './lib/converter'
+require './lib/dictionary'
 
 RSpec.describe do
   before(:each) do
     @converter = Converter.new
+    @dictionary = Dictionary.new
   end
 
   it 'exists' do
@@ -17,5 +19,9 @@ RSpec.describe do
 
   it 'can print' do
     expect(@converter.print).to be_a(String)
+  end
+
+  it 'can convert to braille' do
+    expect(@converter.to_braille).to be_a(String)
   end
 end
