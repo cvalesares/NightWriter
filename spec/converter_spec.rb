@@ -1,10 +1,11 @@
+require 'simplecov'
+SimpleCov.start
 require './lib/converter'
-require './lib/dictionary'
+require './lib/dictionary_mod'
 
 RSpec.describe do
   before(:each) do
     @converter = Converter.new
-    @dictionary = Dictionary.new
   end
 
   it 'exists' do

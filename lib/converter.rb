@@ -34,7 +34,7 @@ class Converter
 
   def to_braille
     results = []
-    input_text = File.read("message.txt").split("")
+    input_text = @read.split("")
     input_text.each do |letter|
         define.keys.include?(letter)
         results << define[letter]
@@ -45,14 +45,17 @@ class Converter
 
   def from_braille
     results = []
-    input_text = File.read("braille.txt").tr('",[]', '').split(' ')
-    input_text.each do |braille|
+    input_text = @read.tr('",[]', '').split(' ')
+    modified_input = input_text.each_slice((input_text.length / 3)).to_a.transpose
+    #above is formatted correctly... now just need to correctly shovel into the array
+    modified_input.each do |braille|
       # require "pry"; binding.pry
       define.invert.keys.include?(braille)
       results << define.invert[braille]
     end
     results
-    File.write("#{@write_to}", results.compact.transpose)
+    # require "pry"; binding.pry
+    File.write("#{@write_to}", results)
   end
 
   # def wrap_text
