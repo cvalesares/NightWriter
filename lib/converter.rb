@@ -36,12 +36,28 @@ class Converter
     results = []
     input_text = File.read("message.txt").split("")
     input_text.each do |letter|
+      require "pry"; binding.pry
         define.keys.include?(letter)
         results << define[letter]
     end
     results
-    # require "pry"; binding.pry
-    #this line is written incorrectly
-    File.write("#{@write_to}", results)
+    File.write("#{@write_to}", results.compact.transpose)
   end
+
+  def to_english
+    results = []
+    input_text = File.read("message.txt").split("")
+    input_text.each do |braille|
+      define.invert.keys.include?(braille)
+      results << define.invert[braille]
+    end
+    results
+    File.write("#{@write_to}", results.compact.transpose)")
+  end 
+
+  # def wrap_text
+  #   #if chars >= 40
+  #     #split?
+  #   end
+  # end
 end
