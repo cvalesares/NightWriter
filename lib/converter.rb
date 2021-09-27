@@ -45,8 +45,9 @@ class Converter
 
   def from_braille
     results = []
-    input_text = File.read("braille.txt").split("")
+    input_text = File.read("braille.txt").tr('",[]', '').split(' ')
     input_text.each do |braille|
+      # require "pry"; binding.pry
       define.invert.keys.include?(braille)
       results << define.invert[braille]
     end
