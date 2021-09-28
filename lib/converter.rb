@@ -5,9 +5,6 @@ class Converter
   attr_reader :input,
               :write_to,
               :read
-              # :top,
-              # :middle,
-              # :bot
 
   #ARGV[0] = original text file
   #ARGV[1] = new braille text file
@@ -15,9 +12,6 @@ class Converter
     @input = ARGV
     @write_to = input[1]
     @read = File.read(input[0])
-    # @middle = []
-    # @bot = []
-    # @dictionary = Dictionary.new
   end
 
   def print
@@ -40,6 +34,7 @@ class Converter
         results << define[letter]
     end
     results
+    # require "pry"; binding.pry
     File.write("#{@write_to}", results.compact.transpose)
   end
 
@@ -54,13 +49,16 @@ class Converter
       results << define.invert[braille]
     end
     results
-    # require "pry"; binding.pry
-    File.write("#{@write_to}", results)
+    File.write("#{@write_to}", results.join)
   end
 
   # def wrap_text
-  #   #if chars >= 40
-  #     #split?
+  #   require "pry"; binding.pry
+  #   to_braille.map do |row|
+  #     # require "pry"; binding.pry
+  #     join = row.join('')
+  #     if rj.size > 80
+  #     end
   #   end
   # end
 end
