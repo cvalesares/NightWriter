@@ -6,8 +6,6 @@ class Converter
               :write_to,
               :read
 
-  #ARGV[0] = original text file
-  #ARGV[1] = new braille text file
   def initialize
     @input = ARGV
     @write_to = input[1]
@@ -21,7 +19,6 @@ class Converter
 
   def create
     File.open("#{@write_to}", "w") do |file|
-      #this is hardcoded... needs to return braile helper method
       file.write('test')
     end
   end
@@ -34,7 +31,6 @@ class Converter
         results << define[letter]
     end
     results
-    # require "pry"; binding.pry
     File.write("#{@write_to}", results.compact.transpose)
   end
 
@@ -42,9 +38,7 @@ class Converter
     results = []
     input_text = @read.tr('",[]', '').split(' ')
     modified_input = input_text.each_slice((input_text.length / 3)).to_a.transpose
-    #above is formatted correctly... now just need to correctly shovel into the array
     modified_input.each do |braille|
-      # require "pry"; binding.pry
       define.invert.keys.include?(braille)
       results << define.invert[braille]
     end
